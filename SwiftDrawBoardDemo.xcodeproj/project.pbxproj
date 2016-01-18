@@ -19,6 +19,7 @@
 		9F987A791C4CD3B8008D7DDD /* YYDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A741C4CD3B8008D7DDD /* YYDrawModel.swift */; };
 		9F987A7A1C4CD3B8008D7DDD /* YYDrawPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A751C4CD3B8008D7DDD /* YYDrawPointModel.swift */; };
 		9F987A7B1C4CD3B8008D7DDD /* YYDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A761C4CD3B8008D7DDD /* YYDrawView.swift */; };
+		9F987A7D1C4CE7F4008D7DDD /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A7C1C4CE7F4008D7DDD /* UIColor+Extension.swift */; };
 		F7144AF101D3769FD183DB81 /* Pods_SwiftDrawBoardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723D0901FA0666B323111FF1 /* Pods_SwiftDrawBoardDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		9F987A741C4CD3B8008D7DDD /* YYDrawModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYDrawModel.swift; sourceTree = "<group>"; };
 		9F987A751C4CD3B8008D7DDD /* YYDrawPointModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYDrawPointModel.swift; sourceTree = "<group>"; };
 		9F987A761C4CD3B8008D7DDD /* YYDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYDrawView.swift; sourceTree = "<group>"; };
+		9F987A7C1C4CE7F4008D7DDD /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D2544B8650CB765495A0E675 /* Pods-SwiftDrawBoardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDrawBoardDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDrawBoardDemo/Pods-SwiftDrawBoardDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 				9F987A741C4CD3B8008D7DDD /* YYDrawModel.swift */,
 				9F987A751C4CD3B8008D7DDD /* YYDrawPointModel.swift */,
 				9F987A761C4CD3B8008D7DDD /* YYDrawView.swift */,
+				9F987A7C1C4CE7F4008D7DDD /* UIColor+Extension.swift */,
 			);
 			path = SwiftDrawBoard;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				9F987A791C4CD3B8008D7DDD /* YYDrawModel.swift in Sources */,
 				9F987A391C4C8E85008D7DDD /* ViewController.swift in Sources */,
 				9F987A371C4C8E85008D7DDD /* AppDelegate.swift in Sources */,
+				9F987A7D1C4CE7F4008D7DDD /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

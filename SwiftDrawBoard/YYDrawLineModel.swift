@@ -11,7 +11,7 @@ import UIKit
 public class YYDrawLineModel: NSObject {
     
     public var pointList = [YYDrawPointModel]()
-    public var paintColor = "d1d1d1"
+    public var paintColor = "#FF000000"
     public var paintSize : NSNumber = 1
     public var isEraser : NSNumber = 0
     

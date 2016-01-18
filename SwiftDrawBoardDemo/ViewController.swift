@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let view  = YYDrawView(frame: CGRectMake(0, 20, 300, 400), lineColor: "#d1d1d1")
+        let view  = YYDrawView(frame: CGRectMake(0, 20, 300, 400), lineColor: "#FF000000")
         view.drawLineCompletion = {model in
             print(model)
         

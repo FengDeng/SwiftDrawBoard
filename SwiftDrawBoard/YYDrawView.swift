@@ -161,7 +161,7 @@ extension YYDrawView{
                 self.caLayer.lineWidth = 10
             }
             if lineType == 1{
-                self.caLayer.strokeColor = UIColor(rgba:self.lineColor).CGColor
+                self.caLayer.strokeColor = UIColor.yy_hexString(self.lineColor).CGColor
                 self.caLayer.lineWidth = path.lineWidth
             }
             self.layer.addSublayer(self.caLayer)
@@ -246,7 +246,7 @@ extension YYDrawView{
             caLayer.fillColor = UIColor.clearColor().CGColor
             caLayer.lineCap = kCALineCapRound
             caLayer.lineJoin = kCALineJoinRound
-            caLayer.strokeColor = UIColor(rgba:line.paintColor).CGColor
+            caLayer.strokeColor = UIColor.yy_hexString(line.paintColor).CGColor
             caLayer.lineWidth = path.lineWidth
             self.layer.addSublayer(caLayer)
             
