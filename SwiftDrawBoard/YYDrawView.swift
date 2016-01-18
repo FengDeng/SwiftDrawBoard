@@ -79,7 +79,7 @@ public class YYDrawView: UIView {
         }
     }
     var lineWidth : CGFloat = 1 //当前线的宽度
-    public var lineType  = 1 //当前线的类型，1是铅笔，0是橡皮
+    public var lineType  = 0 //当前线的类型，0是铅笔，1是橡皮
     public var drawLineCompletion : ((YYDrawModel)->Void)?//绘制一条线完毕后的回调
     public var addHeightCompletion : ((YYDrawModel)->Void)?//绘制一条线完毕后的回调
     public var changeLineType : (Bool ->Void)? //线的属性回调，yes是线，no是橡皮
@@ -156,13 +156,14 @@ extension YYDrawView{
             self.caLayer.lineCap = kCALineCapRound
             self.caLayer.lineJoin = kCALineJoinRound
             if lineType == 0{
+                self.caLayer.strokeColor = UIColor.yy_hexString(self.lineColor).CGColor
+                self.caLayer.lineWidth = path.lineWidth
+            }
+            if lineType == 1{
+                
                 self.caLayer.strokeColor = self.backgroundColor!.CGColor
                 //self.path.strokeWithBlendMode(CGBlendMode.Clear, alpha: 1.0)
                 self.caLayer.lineWidth = 10
-            }
-            if lineType == 1{
-                self.caLayer.strokeColor = UIColor.yy_hexString(self.lineColor).CGColor
-                self.caLayer.lineWidth = path.lineWidth
             }
             self.layer.addSublayer(self.caLayer)
             self.lines.append(self.caLayer)
@@ -246,7 +247,11 @@ extension YYDrawView{
             caLayer.fillColor = UIColor.clearColor().CGColor
             caLayer.lineCap = kCALineCapRound
             caLayer.lineJoin = kCALineJoinRound
-            caLayer.strokeColor = UIColor.yy_hexString(line.paintColor).CGColor
+            if line.isEraser.boolValue{
+                caLayer.strokeColor = self.backgroundColor!.CGColor
+            }else{
+                caLayer.strokeColor = UIColor.yy_hexString(line.paintColor).CGColor
+            }
             caLayer.lineWidth = path.lineWidth
             self.layer.addSublayer(caLayer)
             
@@ -317,7 +322,8 @@ public extension YYDrawView{
         let frame = self.frame
         let fra = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height + 100.0)
         self.frame = fra
-        self.drawLineCompletion?(self.drawModel)
+        self.drawModel.height = self.drawModel.height.CGFloatValue() + 100
+        self.addHeightCompletion?(self.drawModel)
         self.setNeedsLayout()
     }
     

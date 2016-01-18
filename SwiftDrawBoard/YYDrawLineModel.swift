@@ -13,10 +13,10 @@ public class YYDrawLineModel: NSObject {
     public var pointList = [YYDrawPointModel]()
     public var paintColor = "#FF000000"
     public var paintSize : NSNumber = 1
-    public var isEraser : NSNumber = 0
+    public var isEraser : NSNumber = 0 //0是铅笔，1是橡皮
     
     override public static func mj_objectClassInArray() -> [NSObject : AnyObject]! {
         return ["pointList":YYDrawPointModel.self]
     }
-
+    
 }
