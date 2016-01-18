@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import MJExtension
 
 public class YYDrawModel: NSObject {
     public var lines = [YYDrawLineModel]()
     public var width : NSNumber = 0
     public var height : NSNumber = 300
     public var backImangeURL = ""
+    
+    override public static func mj_objectClassInArray() -> [NSObject : AnyObject]! {
+        return ["lines":YYDrawLineModel.self]
+    }
     
 }

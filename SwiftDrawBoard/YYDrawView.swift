@@ -73,11 +73,12 @@ public class YYDrawView: UIView {
     var caLayer = CAShapeLayer() //当前的shapeLayer
     var lines = [CAShapeLayer]() //所有的线条layer
     var deleteLines = [CAShapeLayer]() //被删除线条layer
-    var lineColor = "" //当前线的颜色
+    public var lineColor = "" //当前线的颜色
     var lineWidth : CGFloat = 1 //当前线的宽度
     public var lineType  = 1 //当前线的类型，1是铅笔，0是橡皮
     public var drawLineCompletion : ((YYDrawModel)->Void)?//绘制一条线完毕后的回调
     public var addHeightCompletion : ((YYDrawModel)->Void)?//绘制一条线完毕后的回调
+    public var changeLineType : (Bool ->Void)? //线的属性回调，yes是线，no是橡皮
     
     public var drawModels = [YYDrawModel](){//当前所有待绘图的模型，不可改变
         didSet{
@@ -103,7 +104,7 @@ public class YYDrawView: UIView {
         return self.yy_tableView()
     }()
     
-    convenience init(frame: CGRect,lineColor:String) {
+    convenience public init(frame: CGRect,lineColor:String) {
         self.init(frame: frame)
 //        self.drawSettingView.penOrEraseBtn.addTarget(self, action: "pen", forControlEvents: .TouchUpInside)
 //        self.drawSettingView.undoBtn.addTarget(self, action: "undo", forControlEvents: .TouchUpInside)
@@ -268,9 +269,11 @@ public extension YYDrawView{
         if self.lineType == 0{
             self.lineType = 1
             self.drawSettingView.penOrEraseBtn.setTitle("当前画笔", forState: .Normal)
+            self.changeLineType?(true)
         }else{
             self.lineType = 0
             self.drawSettingView.penOrEraseBtn.setTitle("当前橡皮", forState: .Normal)
+            self.changeLineType?(false)
         }
     }
     //前进

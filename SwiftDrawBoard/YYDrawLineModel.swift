@@ -14,5 +14,9 @@ public class YYDrawLineModel: NSObject {
     public var paintColor = "d1d1d1"
     public var paintSize : NSNumber = 1
     public var isEraser : NSNumber = 0
+    
+    override public static func mj_objectClassInArray() -> [NSObject : AnyObject]! {
+        return ["pointList":YYDrawPointModel.self]
+    }
 
 }

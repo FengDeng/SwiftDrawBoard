@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = "SwiftDrawBoard"
-s.version          = "0.0.4"
+s.version          = "0.0.5"
 s.summary          = "绘图"
 s.description      = <<-DESC
 
@@ -19,5 +19,6 @@ s.source_files = 'SwiftDrawBoard/**/*.swift'
 s.frameworks = 'Foundation','UIKit'
 
 s.dependency 'UIColor_Hex_Swift', '~> 1.8'
+s.dependency 'MJExtension', '~> 3.0.7'
 
 end
