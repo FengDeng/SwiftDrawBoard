@@ -18,6 +18,7 @@
 		9F987A681C4C8F7F008D7DDD /* YYDrawPointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A671C4C8F7F008D7DDD /* YYDrawPointModel.swift */; };
 		9F987A6A1C4C900D008D7DDD /* YYDrawModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A691C4C900D008D7DDD /* YYDrawModel.swift */; };
 		9F987A6C1C4C9346008D7DDD /* YYDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A6B1C4C9346008D7DDD /* YYDrawView.swift */; };
+		9F987A6F1C4CCFB9008D7DDD /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F987A6E1C4CCFB9008D7DDD /* UIView+Extension.swift */; };
 		F7144AF101D3769FD183DB81 /* Pods_SwiftDrawBoardDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723D0901FA0666B323111FF1 /* Pods_SwiftDrawBoardDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		9F987A691C4C900D008D7DDD /* YYDrawModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYDrawModel.swift; sourceTree = "<group>"; };
 		9F987A6B1C4C9346008D7DDD /* YYDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYDrawView.swift; sourceTree = "<group>"; };
 		9F987A6D1C4CA98A008D7DDD /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		9F987A6E1C4CCFB9008D7DDD /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D2544B8650CB765495A0E675 /* Pods-SwiftDrawBoardDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDrawBoardDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDrawBoardDemo/Pods-SwiftDrawBoardDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				9F987A671C4C8F7F008D7DDD /* YYDrawPointModel.swift */,
 				9F987A691C4C900D008D7DDD /* YYDrawModel.swift */,
 				9F987A6B1C4C9346008D7DDD /* YYDrawView.swift */,
+				9F987A6E1C4CCFB9008D7DDD /* UIView+Extension.swift */,
 			);
 			name = SwiftDrawBoard;
 			path = ../SwiftDrawBoard;
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F987A681C4C8F7F008D7DDD /* YYDrawPointModel.swift in Sources */,
+				9F987A6F1C4CCFB9008D7DDD /* UIView+Extension.swift in Sources */,
 				9F987A391C4C8E85008D7DDD /* ViewController.swift in Sources */,
 				9F987A6C1C4C9346008D7DDD /* YYDrawView.swift in Sources */,
 				9F987A6A1C4C900D008D7DDD /* YYDrawModel.swift in Sources */,

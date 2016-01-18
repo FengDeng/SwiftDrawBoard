@@ -99,7 +99,9 @@ public class YYDrawView: UIView {
     
     var drawSettingView = YYSettingView(frame:CGRectMake(20,10,300,30))
     
-    
+    lazy var tableView : UITableView? = {
+        return self.yy_tableView()
+    }()
     
     convenience init(frame: CGRect,lineColor:String) {
         self.init(frame: frame)
@@ -126,6 +128,9 @@ extension YYDrawView{
     }
     
     override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if self.tableView != nil{
+            self.tableView!.scrollEnabled = false
+        }
         guard let startPoint = pointWithTouches(touches) else{return}
         guard let event = event else{return}
         guard let count = event.allTouches()?.count else{return}
@@ -160,6 +165,9 @@ extension YYDrawView{
     }
     
     override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if self.tableView != nil{
+            self.tableView!.scrollEnabled = false
+        }
         guard let movePoint = pointWithTouches(touches) else{return}
         guard let event = event else{return}
         guard let count = event.allTouches()?.count else{return}
@@ -175,6 +183,9 @@ extension YYDrawView{
     }
     
     override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if self.tableView != nil{
+            self.tableView!.scrollEnabled = true
+        }
         guard let event = event else{return}
         guard let count = event.allTouches()?.count else{return}
         if count > 1{
@@ -185,9 +196,19 @@ extension YYDrawView{
     }
     
     override public func touchesCancelled(touches: Set<UITouch>?, withEvent event: UIEvent?) {
+        if self.tableView != nil{
+            self.tableView!.scrollEnabled = true
+        }
         self.superview?.touchesCancelled(touches, withEvent: event)
         //回调
         self.drawLineCompletion?(self.drawModel)
+    }
+    
+    override public func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        if self.tableView != nil{
+            self.tableView!.scrollEnabled = false
+        }
+        return super.hitTest(point, withEvent: event)
     }
     
 }
