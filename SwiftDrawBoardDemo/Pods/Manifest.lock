@@ -1,0 +1,13 @@
+PODS:
+  - MJExtension (3.0.10)
+  - UIColor_Hex_Swift (1.8)
+
+DEPENDENCIES:
+  - MJExtension (~> 3.0.7)
+  - UIColor_Hex_Swift (~> 1.8)
+
+SPEC CHECKSUMS:
+  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
+  UIColor_Hex_Swift: a66b9d5f6e8fddbd9fe32996504f0b7e9d20d680
+
+COCOAPODS: 0.39.0
