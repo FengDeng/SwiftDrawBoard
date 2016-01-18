@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-s.name             = "SwiftDrawingBoard"
+s.name             = "SwiftDrawBoard"
 s.version          = "0.0.3"
 s.summary          = "绘图"
 s.description      = <<-DESC
