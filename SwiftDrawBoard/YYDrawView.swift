@@ -61,7 +61,7 @@ class YYSettingView : UIView{
         
         self.backgroundColor = UIColor.redColor()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,7 +73,11 @@ public class YYDrawView: UIView {
     var caLayer = CAShapeLayer() //当前的shapeLayer
     var lines = [CAShapeLayer]() //所有的线条layer
     var deleteLines = [CAShapeLayer]() //被删除线条layer
-    public var lineColor = "" //当前线的颜色
+    public var lineColor = ""{ //当前线的颜色
+        didSet{
+            self.clipsToBounds = true
+        }
+    }
     var lineWidth : CGFloat = 1 //当前线的宽度
     public var lineType  = 1 //当前线的类型，1是铅笔，0是橡皮
     public var drawLineCompletion : ((YYDrawModel)->Void)?//绘制一条线完毕后的回调
@@ -106,12 +110,12 @@ public class YYDrawView: UIView {
     
     convenience public init(frame: CGRect,lineColor:String) {
         self.init(frame: frame)
-//        self.drawSettingView.penOrEraseBtn.addTarget(self, action: "pen", forControlEvents: .TouchUpInside)
-//        self.drawSettingView.undoBtn.addTarget(self, action: "undo", forControlEvents: .TouchUpInside)
-//        self.drawSettingView.redoBtn.addTarget(self, action: "redo", forControlEvents: .TouchUpInside)
-//        self.drawSettingView.clearBtn.addTarget(self, action: "clear", forControlEvents: .TouchUpInside)
-//        self.drawSettingView.addHeightBtn.addTarget(self, action: "addHeight", forControlEvents: .TouchUpInside)
-//        self.addSubview(self.drawSettingView)
+        //        self.drawSettingView.penOrEraseBtn.addTarget(self, action: "pen", forControlEvents: .TouchUpInside)
+        //        self.drawSettingView.undoBtn.addTarget(self, action: "undo", forControlEvents: .TouchUpInside)
+        //        self.drawSettingView.redoBtn.addTarget(self, action: "redo", forControlEvents: .TouchUpInside)
+        //        self.drawSettingView.clearBtn.addTarget(self, action: "clear", forControlEvents: .TouchUpInside)
+        //        self.drawSettingView.addHeightBtn.addTarget(self, action: "addHeight", forControlEvents: .TouchUpInside)
+        //        self.addSubview(self.drawSettingView)
         self.lineColor = lineColor
         
         self.backgroundColor = UIColor.grayColor()
@@ -170,6 +174,10 @@ extension YYDrawView{
             self.tableView!.scrollEnabled = false
         }
         guard let movePoint = pointWithTouches(touches) else{return}
+        if movePoint.x < 0 || movePoint.x > self.frame.width || movePoint.y < 0 || movePoint.y > self.frame.height{
+            self.touchesCancelled(nil, withEvent: nil)
+            return
+        }
         guard let event = event else{return}
         guard let count = event.allTouches()?.count else{return}
         if count == 1{
@@ -210,8 +218,12 @@ extension YYDrawView{
     }
     
     override public func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        if self.tableView != nil{
-            self.tableView!.scrollEnabled = false
+        if let view = super.hitTest(point, withEvent: event){
+            if view.isKindOfClass(YYDrawView.self){
+                if self.tableView != nil{
+                    self.tableView!.scrollEnabled = false
+                }
+            }
         }
         return super.hitTest(point, withEvent: event)
     }
@@ -252,7 +264,7 @@ extension YYDrawView{
             
         }
     }
- 
+    
 }
 
 // MARK: - 清空，铅笔，橡皮，前进，回退，添加高度
@@ -263,6 +275,7 @@ public extension YYDrawView{
             line.removeFromSuperlayer()
         }
         self.lines.removeAll()
+        self.drawLineCompletion?(self.drawModel)
     }
     //铅笔 或 橡皮
     public func pen(){
@@ -284,6 +297,7 @@ public extension YYDrawView{
         self.deleteLines.removeLast()
         self.deleteLineModel.removeLast()
         self.draw(self.lines.last!)
+        self.drawLineCompletion?(self.drawModel)
         
     }
     
@@ -295,6 +309,7 @@ public extension YYDrawView{
         self.lines.last!.removeFromSuperlayer()
         self.lines.removeLast()
         self.drawModel.lines.removeLast()
+        self.drawLineCompletion?(self.drawModel)
     }
     
     //添加高度
@@ -302,6 +317,7 @@ public extension YYDrawView{
         let frame = self.frame
         let fra = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height + 100.0)
         self.frame = fra
+        self.drawLineCompletion?(self.drawModel)
         self.setNeedsLayout()
     }
     
@@ -310,5 +326,5 @@ public extension YYDrawView{
     func draw(caLayer:CAShapeLayer){
         self.layer.addSublayer(caLayer)
     }
-
+    
 }
