@@ -192,6 +192,8 @@ extension YYDrawView{
             self.superview?.touchesEnded(touches, withEvent: event)
         }
         //回调
+        self.drawModel.height = self.frame.size.height
+        self.drawModel.width = self.frame.size.width
         self.drawLineCompletion?(self.drawModel)
     }
     
@@ -201,6 +203,8 @@ extension YYDrawView{
         }
         self.superview?.touchesCancelled(touches, withEvent: event)
         //回调
+        self.drawModel.height = self.frame.size.height
+        self.drawModel.width = self.frame.size.width
         self.drawLineCompletion?(self.drawModel)
     }
     

@@ -11,7 +11,7 @@ import UIKit
 public class YYDrawModel: NSObject {
     public var lines = [YYDrawLineModel]()
     public var width : NSNumber = 0
-    public var height : NSNumber = 0
+    public var height : NSNumber = 300
     public var backImangeURL = ""
     
 }
