@@ -280,6 +280,7 @@ public extension YYDrawView{
             line.removeFromSuperlayer()
         }
         self.lines.removeAll()
+        self.drawModel.lines.removeAll()
         self.drawLineCompletion?(self.drawModel)
     }
     //铅笔 或 橡皮
